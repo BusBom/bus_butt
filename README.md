@@ -8,21 +8,25 @@
 
 - 전체 반복 루프를 관리
 - 1초마다 sequence + stop-status를 읽고 → 매칭 → 결과 출력
+  
 
 ## `shm_reader.cpp / .h`
 
 - SHM(`/sequence`)에서 버스 번호 벡터를 읽는 함수 구현
 ```std::vector<int> readSequenceFromSHM();```
 
+
 ## `mock_status.cpp / .h`
 
 - CGI 연동 전까지 사용할 임시 stop-status 벡터 반환
 ```std::vector<int> readStopStatusMock();  // ex: {0, 1, 1, 0}```
 
+
 ## `display_writer.cpp / .h`
 
 - 지금은 콘솔에 출력 ( `/dev/bus_display`로 수정 가능)
 ```void printResultToStdout(const std::vector<std::pair<int, int>>& result);```
+
 
 - `readSequenceFromSHM()` → SHM `/sequence`에서 버스 번호 읽기
 - `readStopStatusMock()` → 플랫폼 상태 임시 반환
